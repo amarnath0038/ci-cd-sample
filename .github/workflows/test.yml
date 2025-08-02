@@ -1,0 +1,29 @@
+name: GitHub Actions Demo
+
+on: [push]
+
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say Hello
+        run: echo "👋 Hello! ${{ github.actor }} is testing out GitHub Actions 🚀"
+
+      - name: Print GitHub metadata
+        run: |
+          echo "The job was automatically triggered by a ${{ github.event_name }} event."
+          echo "This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+          echo "The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: Confirm repo cloned
+        run: echo "The ${{ github.repository }} repository has been cloned to the runner."
+
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+
+      - name: Print job status
+        run: echo "This job's status is ${{ job.status }}."
